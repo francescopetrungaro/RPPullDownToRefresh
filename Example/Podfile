@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'RPPullDownToRefresh_Example', :exclusive => true do
+  pod "RPPullDownToRefresh", :path => "../"
+end
+
+target 'RPPullDownToRefresh_Tests', :exclusive => true do
+  pod "RPPullDownToRefresh", :path => "../"
+end
