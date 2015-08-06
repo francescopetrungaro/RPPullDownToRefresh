@@ -9,13 +9,12 @@
 
 Pod::Spec.new do |s|
   s.name             = "RPPullDownToRefresh"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of RPPullDownToRefresh."
+  s.version          = "0.1.1"
+  s.summary          = "iOS pull to refresh library"
   s.description      = <<-DESC
-                       An optional longer description of RPPullDownToRefresh
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       RPPullDownToRefresh is an OpenSource pull to refresh library for iOS 8 and above
+
                        DESC
   s.homepage         = "https://github.com/RedPlumber/RPPullDownToRefresh"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

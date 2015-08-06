@@ -20,6 +20,37 @@ it, simply add the following line to your Podfile:
 pod "RPPullDownToRefresh"
 ```
 
+# RPPullDownToRefresh
+
+![alt tag](https://github.com/RedPlumber/RPPullDownToRefresh.git)
+
+# SAMPLE CODE
+```swift
+import RPPullDownToRefresh
+
+class ViewController: UIViewController{
+
+    var refreshControl : PullDownToRefresh?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        var colors = [UIColor.yellowColor(), UIColor.purpleColor(), UIColor.cyanColor(), UIColor.brownColor()]
+
+        self.refreshControl = PullDownToRefresh(scrollView: self.tableView, marginFromTop : 64, colors : colors)
+        self.view.addSubview(self.refreshControl!)
+        self.refreshControl?.addTarget(self, action: "refreshData:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+
+    func refreshData(sender : AnyObject?){
+        let delay = 5 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            self.refreshControl!.stopRefreshing()
+        }
+    }
+```
+
 ## Author
 
 Francesco Petrungaro (RedPlumber), redplumber@icloud.com
