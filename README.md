@@ -10,6 +10,9 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+- iOS 8.0+
+- Xcode 6.3
+- Swift 1.2
 
 ## Installation
 
@@ -17,6 +20,7 @@ RPPullDownToRefresh is available through [CocoaPods](http://cocoapods.org). To i
 it, simply add the following line to your Podfile:
 
 ```ruby
+use_frameworks!
 pod "RPPullDownToRefresh"
 ```
 
@@ -24,10 +28,18 @@ pod "RPPullDownToRefresh"
 
 ![alt tag](https://github.com/RedPlumber/RPPullDownToRefresh.git)
 
-# SAMPLE CODE
+
+#HOW TO USE IT
+
+At first, import RPPullDownToRefresh framework:
+
 ```swift
 import RPPullDownToRefresh
+```
 
+Ccreate the refresh control, add it to your view and provide and provide the end action
+
+```swift
 class ViewController: UIViewController{
 
     var refreshControl : PullDownToRefresh?

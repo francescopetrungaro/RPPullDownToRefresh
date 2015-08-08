@@ -119,7 +119,7 @@ public class PullDownToRefresh: UIControl {
                                 self.layoutIfNeeded()
                             })
                             
-                            self.startAnimation()
+                            self.startRefreshing()
                             self.sendActionsForControlEvents(UIControlEvents.ValueChanged)
                         }
                     }
@@ -142,7 +142,7 @@ public class PullDownToRefresh: UIControl {
     private func setupFrame(){
         let origin = self.superview == nil ? 0.0 : CGRectGetWidth(self.superview!.frame)
         
-        var rect = CGRectMake((origin - CGRectGetWidth(self.mainView.frame))/2, -kTopSpaceVerticalOffset + self.marginFromTop, CGRectGetWidth(self.mainView.frame), CGRectGetWidth(self.mainView.frame))
+        let rect = CGRectMake((origin - CGRectGetWidth(self.mainView.frame))/2, -kTopSpaceVerticalOffset + self.marginFromTop, CGRectGetWidth(self.mainView.frame), CGRectGetWidth(self.mainView.frame))
         self.frame = rect
     }
     
@@ -193,9 +193,8 @@ public class PullDownToRefresh: UIControl {
         
         self.layer.opacity = 1
         
-        
-        var newY = -contentOffset.y - kTopSpaceVerticalOffset
-        
+        let newY = -contentOffset.y - kTopSpaceVerticalOffset
+
         if abs(contentOffset.y) % 5 == 0 {
             self.indexColor++
             if (self.indexColor > self.colors!.count - 1) {
@@ -243,25 +242,6 @@ public class PullDownToRefresh: UIControl {
     // MARK: - Start Refreshing Animations
 
     private func startRefreshing(){
-        
-        self.currentRefreshState = PullDownToRefreshState.Refreshing
-        self.centerXConstrait.constant = 0;
-        self.topSpaceVerticalConstrait.constant = kTopSpaceVerticalOffset - self.marginFromTop!
-        self.layoutIfNeeded()
-        
-        UIView.animateWithDuration(0.6, animations: { () -> Void in
-            
-            self.layer.opacity = 1
-            self.centerXConstrait.constant = -CGRectGetWidth(self.mainView.frame)/2
-            self.topSpaceVerticalConstrait.constant = kTopSpaceVerticalOffset - self.marginFromTop!
-            self.layoutIfNeeded()
-            
-            }, completion : nil)
-        
-        self.startAnimation()
-    }
-
-    private func startAnimation(){
         
         let offset = CGFloat(10)
         let endOrigin = CGPoint(x: -offset/2 , y: -offset/2)
@@ -317,7 +297,6 @@ public class PullDownToRefresh: UIControl {
     private func finalAnimation() {
         
         let endPath = self.fullScreenCirclePath()
-        let startPath = UIBezierPath(CGPath: self.finalLayer.path)
         
         let pathAnimation = CABasicAnimation(keyPath: "path")
         pathAnimation.fromValue = self.finalLayer.path

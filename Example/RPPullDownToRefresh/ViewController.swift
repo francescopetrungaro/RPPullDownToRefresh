@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         
         self.tableView.delegate = self
-        var colors = [UIColor.yellowColor(), UIColor.purpleColor(), UIColor.cyanColor(), UIColor.brownColor()]
+        let colors = [UIColor.yellowColor(), UIColor.purpleColor(), UIColor.cyanColor(), UIColor.brownColor()]
         
         self.refreshControl = PullDownToRefresh(scrollView: self.tableView, marginFromTop : 64, colors : colors)
         self.view.addSubview(self.refreshControl!)

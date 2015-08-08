@@ -9,11 +9,11 @@
 
 Pod::Spec.new do |s|
   s.name             = "RPPullDownToRefresh"
-  s.version          = "0.1.1"
-  s.summary          = "iOS pull to refresh library"
+  s.version          = "0.1.2"
+  s.summary          = "iOS Custom pull-to-refresh"
   s.description      = <<-DESC
 
-                       RPPullDownToRefresh is an OpenSource pull to refresh library for iOS 8 and above
+                       Custom animated pull-to-refresh
 
                        DESC
   s.homepage         = "https://github.com/RedPlumber/RPPullDownToRefresh"
